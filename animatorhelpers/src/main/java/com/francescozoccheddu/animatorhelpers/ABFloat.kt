@@ -1,6 +1,6 @@
 package com.francescozoccheddu.animatorhelpers
 
-class ABAnimatedFloatValue(initialValue: Float) : ABAnimatedValue<Float>(initialValue) {
+class ABFloat(initialValue: Float) : ABValue<Float>(initialValue) {
 
     override fun getDifference(a: Float, b: Float) = a - b
 

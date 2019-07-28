@@ -5,14 +5,7 @@ import android.animation.ValueAnimator
 import kotlin.math.abs
 import kotlin.math.roundToLong
 
-abstract class ABAnimatedValue<Type>(initialValue: Type) : TargetedAnimatedValue<Type>(initialValue) {
-
-    protected companion object {
-
-        @JvmStatic
-        protected fun lerp(from: Float, to: Float, progress: Float) = from * (1f - progress) + to * progress
-
-    }
+abstract class ABValue<Type>(initialValue: Type) : TargetedValue<Type>(initialValue) {
 
     enum class DurationMode {
         CONSTANT_DURATION, CONSTANT_SPEED
