@@ -4,7 +4,23 @@ import kotlin.reflect.KProperty
 
 abstract class AnimatedValue<Type>(initialValue: Type) {
 
-    open var value = initialValue
+    protected var _value = initialValue
+        set(value) {
+            if (field != value) {
+                field = value
+                onUpdate?.invoke(value)
+            }
+        }
+
+    var value: Type
+        get() = _value
+        set(value) {
+            if (value != _value) {
+                animateTo(value)
+            }
+        }
+
+    protected open fun animateTo(value: Type) {}
 
     var onUpdate: ((Type) -> Unit)? = null
 

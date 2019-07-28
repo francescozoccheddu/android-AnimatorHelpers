@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import com.francescozoccheddu.animatorhelpers.UnanimatedValue
+import com.francescozoccheddu.animatorhelpers.SmoothAnimatedValue
 
 class MainActivity : Activity() {
 
@@ -15,15 +15,17 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val target = findViewById<View>(R.id.target)
-        var tx by UnanimatedValue(target.x).apply {
+        var tx by SmoothAnimatedValue(target.x).apply {
             onUpdate = {
                 target.x = it
             }
+            snap = 5f
         }
-        var ty by UnanimatedValue(target.y).apply {
+        var ty by SmoothAnimatedValue(target.y).apply {
             onUpdate = {
                 target.y = it
             }
+            snap = 5f
         }
         gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
 
