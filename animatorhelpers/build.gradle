@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
 
@@ -29,4 +31,14 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+
+publish {
+    userOrg = 'francescoz'
+    groupId = 'com.francescozoccheddu.animatorhelpers'
+    artifactId = 'KotlinAnimatorHelpers'
+    publishVersion = '0.1.0'
+    repoName = 'KotlinAnimatorHelpers'
+    desc = 'Animator helpers for Android and Kotlin'
+    website = 'https://github.com/francescozoccheddu/android-AnimatorHelpers'
 }
