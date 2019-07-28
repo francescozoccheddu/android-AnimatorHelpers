@@ -1,0 +1,3 @@
+package com.francescozoccheddu.animatorhelpers
+
+class Animator
