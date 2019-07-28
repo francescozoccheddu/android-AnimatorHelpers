@@ -1,6 +1,5 @@
 package com.francescozoccheddu.animatorhelpers
 
-
 class SmoothColor(initialValue: Int) : SmoothValue<Int>(initialValue) {
 
     private companion object {

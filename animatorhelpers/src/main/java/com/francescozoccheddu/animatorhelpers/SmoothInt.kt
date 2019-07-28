@@ -2,7 +2,6 @@ package com.francescozoccheddu.animatorhelpers
 
 import kotlin.math.roundToInt
 
-
 class SmoothInt(initialValue: Int) : SmoothValue<Int>(initialValue) {
 
     private companion object {
@@ -20,6 +19,5 @@ class SmoothInt(initialValue: Int) : SmoothValue<Int>(initialValue) {
         rawValue = smooth(rawValue, target.toFloat(), SNAP)
         _value = rawValue.roundToInt()
     }
-
 
 }
