@@ -32,3 +32,7 @@ trestle.keystore
 *.war
 *.ear
 hs_err_pid*
+.project
+gradlew
+gradlew.bat
+.settings/org.eclipse.buildship.core.prefs
