@@ -1,6 +1,6 @@
 package com.francescozoccheddu.animatorhelpers
 
-abstract class TargetedAnimatedValue<Type>(initialValue: Type) : AnimatedValue<Type>(initialValue) {
+abstract class TargetedValue<Type>(initialValue: Type) : AnimatedValue<Type>(initialValue) {
 
     var target: Type = initialValue
         private set

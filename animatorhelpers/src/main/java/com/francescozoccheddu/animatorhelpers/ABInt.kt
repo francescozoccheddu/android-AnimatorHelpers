@@ -2,7 +2,7 @@ package com.francescozoccheddu.animatorhelpers
 
 import kotlin.math.roundToInt
 
-class ABAnimatedIntValue(initialValue: Int) : ABAnimatedValue<Int>(initialValue) {
+class ABInt(initialValue: Int) : ABValue<Int>(initialValue) {
 
     override fun getDifference(a: Int, b: Int) = (a - b).toFloat()
 
