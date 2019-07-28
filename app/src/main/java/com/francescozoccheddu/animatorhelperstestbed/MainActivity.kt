@@ -9,7 +9,6 @@ import com.francescozoccheddu.animatorhelpers.SmoothFloat
 
 class MainActivity : Activity() {
 
-    private lateinit var gestureDetector: GestureDetector
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,19 +16,19 @@ class MainActivity : Activity() {
         val target = findViewById<View>(R.id.target)
         var tx by SmoothFloat(target.x).apply {
             onUpdate = {
-                target.x = it
+                target.x = it - target.width / 2f
             }
             snap = 1f
             smoothing = 0.1f
         }
         var ty by SmoothFloat(target.y).apply {
             onUpdate = {
-                target.y = it
+                target.y = it - target.height / 2f
             }
             snap = 1f
             smoothing = 0.1f
         }
-        gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+        val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
 
             override fun onDown(e: MotionEvent?) = true
 
@@ -56,8 +55,9 @@ class MainActivity : Activity() {
             setIsLongpressEnabled(false)
             setOnDoubleTapListener(null)
         }
+        findViewById<View>(R.id.root).setOnTouchListener { _, event ->
+            gestureDetector.onTouchEvent(event)
+        }
     }
-
-    override fun onTouchEvent(event: MotionEvent?) = gestureDetector.onTouchEvent(event)
 
 }
