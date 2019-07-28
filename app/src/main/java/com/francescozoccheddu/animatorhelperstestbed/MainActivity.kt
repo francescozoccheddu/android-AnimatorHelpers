@@ -1,10 +1,11 @@
-package com.francescozoccheddu.animatorhelpers
+package com.francescozoccheddu.animatorhelperstestbed
 
 import android.app.Activity
 import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
+import com.francescozoccheddu.animatorhelpers.UnanimatedValue
 
 class MainActivity : Activity() {
 
@@ -14,13 +15,23 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val target = findViewById<View>(R.id.target)
+        var tx by UnanimatedValue(target.x).apply {
+            onUpdate = {
+                target.x = it
+            }
+        }
+        var ty by UnanimatedValue(target.y).apply {
+            onUpdate = {
+                target.y = it
+            }
+        }
         gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
 
             override fun onDown(e: MotionEvent?) = true
 
             private fun setTarget(event: MotionEvent) {
-                target.x = event.x
-                target.y = event.y
+                tx = event.x
+                ty = event.y
             }
 
             override fun onSingleTapUp(e: MotionEvent?): Boolean {
