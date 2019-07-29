@@ -9,8 +9,6 @@ class SmoothFloat(initialValue: Float) : SmoothValue<Float>(initialValue) {
             field = value
         }
 
-    override fun update() {
-        _value = smooth(_value, target, snap)
-    }
+    override fun update() = smooth(_value, target, snap)
 
 }

@@ -1,18 +1,16 @@
 package com.francescozoccheddu.animatorhelpers
 
-import android.animation.TimeAnimator
 import kotlin.math.min
 
 abstract class SmoothValue<Type>(initialValue: Type) : TargetedValue<Type>(initialValue) {
 
     override final fun animateToTarget() {
-        if (!animator.isRunning)
-            animator.start()
+        ticker.running = true
     }
 
     override fun reach() {
         super.reach()
-        animator.cancel()
+        ticker.running = false
     }
 
     var smoothness = 0.5f
@@ -24,21 +22,23 @@ abstract class SmoothValue<Type>(initialValue: Type) : TargetedValue<Type>(initi
 
     private var lastProgress: Float? = null
 
-    private val animator = TimeAnimator().apply {
-        setTimeListener { _, _, elapsed ->
+    private val ticker = Ticker().apply {
+        onTick = { elapsed ->
             if (smoothness == 0f)
                 reach()
             else {
-                lastProgress = min((elapsed / 1000f) / smoothness, 1f)
-                update()
+                lastProgress = min(elapsed / smoothness, 1f)
+                _value = update()
                 lastProgress = null
                 if (!running)
                     reach()
             }
         }
+        maxElapsedTime = 1f / 10f
+        maxTickLength = 1f / 30f
     }
 
-    protected abstract fun update()
+    protected abstract fun update(): Type
 
     protected fun smooth(from: Float, to: Float, snap: Float): Float {
         val progress = lastProgress

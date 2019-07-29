@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import com.francescozoccheddu.animatorhelpers.SmoothFloat
+import com.francescozoccheddu.animatorhelpers.SpringFloat
 
 class MainActivity : Activity() {
 
@@ -14,19 +14,19 @@ class MainActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val target = findViewById<View>(R.id.target)
-        var tx by SmoothFloat(target.x).apply {
+        var tx by SpringFloat(target.x).apply {
             onUpdate = {
                 target.x = it - target.width / 2f
             }
-            snap = 1f
-            smoothness = 0.1f
+            speed = 10f
+            maxVelocity = 5000f
         }
-        var ty by SmoothFloat(target.y).apply {
+        var ty by SpringFloat(target.y).apply {
             onUpdate = {
                 target.y = it - target.height / 2f
             }
-            snap = 1f
-            smoothness = 0.1f
+            speed = 10f
+            maxVelocity = 5000f
         }
         val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
 
