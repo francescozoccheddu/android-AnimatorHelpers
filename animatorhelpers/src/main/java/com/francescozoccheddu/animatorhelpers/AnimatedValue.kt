@@ -2,7 +2,7 @@ package com.francescozoccheddu.animatorhelpers
 
 import kotlin.reflect.KProperty
 
-abstract class AnimatedValue<Type>(initialValue: Type) : ReadOnlyAnimatedValue<Type> {
+abstract class AnimatedValue<Type>(initialValue: Type) : ReadOnlyObservableAnimatedValue<Type> {
 
     protected var _value = initialValue
         set(value) {
