@@ -52,6 +52,10 @@ myAnimatedColor.value = Color.YELLOW
             - `SmoothColor`
             - `SmoothFloat`
             - `SmoothInt`
+        - *`SpringValue`*
+            - `SpringColor`
+            - `SpringFloat`
+            - `SpringInt`
 
 ### `AnimatedValue<Type>`
 Base class
@@ -59,7 +63,7 @@ Base class
 `get` animated value / `set` target value
 - **`running`** : `Boolean`  
 `get` whether animation is running or finished
-- **`onUpdate`** : `((Type) -> Unit)?`  
+- **`onUpdate`** : `((ReadOnlyObservableAnimatedValue<Type>) -> Unit)?`  
 `get` / `set` value update callback
 - **`reach()`** : `Unit`  
 end animation and instantly jump to target value
@@ -82,7 +86,15 @@ Use it for transitions or uninterruptible animations
 `get` / `set` constant animation speed (amount per second)
 
 ### `SmoothValue<Type>`
-Continuous animator  
+Continuous exponential animator  
 Use it for continuously changing target values (eg. to smooth touch drag gestures)
 - **`smoothness`** : `Float`  
 `get` / `set` smoothness amount (`0.2f` is a reasonable value)
+
+### `SpringValue<Type>`
+Continuous spring animator  
+Use it for frequently changing target values (eg. to programmatically move on screen objects)
+- **`acceleration`** : `Float`  
+`get` / `set` acceleration amount (velocity increment per second)
+- **`maxVelocity`** : `Float`  
+`get` / `set` velocity limit (amount per second)

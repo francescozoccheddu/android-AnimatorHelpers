@@ -34,7 +34,7 @@ abstract class ABValue<Type>(initialValue: Type) : TargetedValue<Type>(initialVa
         }
 
     var speed
-        get() = if (durationMode == DurationMode.CONSTANT_SPEED) durationValue else throw IllegalStateException("Not in constant speed mode")
+        get() = if (durationMode == DurationMode.CONSTANT_SPEED) durationValue else throw IllegalStateException("Not in constant acceleration mode")
         set(value) {
             if (value <= 0.0f)
                 throw IllegalArgumentException("'${this::speed.name}' must be positive")

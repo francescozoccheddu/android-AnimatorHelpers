@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="label_idle">#FFF</color>
+    <color name="label_running">#FF0</color>
+</resources>

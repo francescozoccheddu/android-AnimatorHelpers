@@ -22,10 +22,10 @@ abstract class SpringValue<Type>(initialValue: Type) : TargetedValue<Type>(initi
             field = value
         }
 
-    var speed = 1f
+    var acceleration = 1f
         set(value) {
             if (value <= 0.0f)
-                throw IllegalArgumentException("'${this::speed.name}' must be positive")
+                throw IllegalArgumentException("'${this::acceleration.name}' must be positive")
             field = value
         }
 
@@ -52,8 +52,8 @@ abstract class SpringValue<Type>(initialValue: Type) : TargetedValue<Type>(initi
             }
 
         fun update(elapsed: Float) {
-            val n1 = velocity - (value - target) * (speed * speed * elapsed)
-            val n2 = 1f + speed * elapsed
+            val n1 = velocity - (value - target) * (acceleration * acceleration * elapsed)
+            val n2 = 1f + acceleration * elapsed
             velocity = (n1 / (n2 * n2)).clampAbsValue(maxVelocity)
             value += velocity * elapsed
             if (snap > 0f && value.isAlmost(target, snap) && velocity.isAlmost(0f, snap * VELOCITY_SNAP_FACTOR)) {

@@ -1,17 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/root"
+        android:id="@+id/fl_root"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:background="@android:color/black"
 >
 
     <View
-            android:id="@+id/target"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_gravity="center"
-            android:background="@android:color/holo_red_dark"/>
+            android:id="@+id/v_target"
+            android:layout_width="@dimen/size"
+            android:layout_height="@dimen/size"
+            android:background="@android:color/holo_red_dark"
+    />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:gravity="start|center_vertical"
+            android:layout_margin="@dimen/hud_margins"
+    >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/hud_margins"
+        >
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_pos"
+            />
+
+            <TextView
+                    android:id="@+id/tv_pos_x"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/label_idle"
+            />
+
+            <TextView
+                    android:id="@+id/tv_pos_y"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/label_idle"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/hud_margins"
+        >
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_col"
+            />
+
+            <TextView
+                    android:id="@+id/tv_col"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/label_idle"
+            />
+
+            <SeekBar
+                    android:id="@+id/sb_col"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="360"
+            />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/hud_margins"
+        >
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_rot"
+            />
+
+            <TextView
+                    android:id="@+id/tv_rot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/label_idle"
+            />
+
+            <SeekBar
+                    android:id="@+id/sb_rot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="360"
+            />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
