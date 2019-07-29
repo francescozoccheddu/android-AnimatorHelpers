@@ -8,9 +8,15 @@ abstract class TargetedValue<Type>(initialValue: Type) : AnimatedValue<Type>(ini
     override final val running: Boolean
         get() = target != value
 
-    override fun animateTo(value: Type) {
-        target = value
+    override final fun animateTo(value: Type) {
+        if (target != value) {
+            target = value
+            if (running)
+                animateToTarget()
+        }
     }
+
+    protected abstract fun animateToTarget()
 
     override fun reach() {
         _value = target

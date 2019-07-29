@@ -5,8 +5,7 @@ import kotlin.math.min
 
 abstract class SmoothValue<Type>(initialValue: Type) : TargetedValue<Type>(initialValue) {
 
-    override final fun animateTo(value: Type) {
-        super.animateTo(value)
+    override final fun animateToTarget() {
         if (!animator.isRunning)
             animator.start()
     }
@@ -16,10 +15,10 @@ abstract class SmoothValue<Type>(initialValue: Type) : TargetedValue<Type>(initi
         animator.cancel()
     }
 
-    var smoothing = 0.5f
+    var smoothness = 0.5f
         set(value) {
             if (value < 0.0f)
-                throw IllegalArgumentException("'${this::smoothing.name}' cannot be negative")
+                throw IllegalArgumentException("'${this::smoothness.name}' cannot be negative")
             field = value
         }
 
@@ -27,10 +26,10 @@ abstract class SmoothValue<Type>(initialValue: Type) : TargetedValue<Type>(initi
 
     private val animator = TimeAnimator().apply {
         setTimeListener { _, _, elapsed ->
-            if (smoothing == 0f)
+            if (smoothness == 0f)
                 reach()
             else {
-                lastProgress = min((elapsed / 1000f) / smoothing, 1f)
+                lastProgress = min((elapsed / 1000f) / smoothness, 1f)
                 update()
                 lastProgress = null
                 if (!running)

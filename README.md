@@ -66,7 +66,7 @@ end animation and instantly jump to target value
 
 ### `TargetedValue<Type>`
 Animated value with target
-- **`target`**  
+- **`target`** : `Type`  
 `get` target value (`set` by **`value`** property)
 
 ### `ABValue<Type>`
@@ -82,7 +82,7 @@ Use it for transitions or uninterruptible animations
 `get` / `set` constant animation speed (amount per second)
 
 ### `SmoothValue<Type>`
-Continuous smoother  
+Continuous animator  
 Use it for continuously changing target values (eg. to smooth touch drag gestures)
-- **`smoothing`** : `Float`  
+- **`smoothness`** : `Float`  
 `get` / `set` smoothness amount (`0.2f` is a reasonable value)

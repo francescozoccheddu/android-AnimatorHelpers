@@ -19,14 +19,14 @@ class MainActivity : Activity() {
                 target.x = it - target.width / 2f
             }
             snap = 1f
-            smoothing = 0.1f
+            smoothness = 0.1f
         }
         var ty by SmoothFloat(target.y).apply {
             onUpdate = {
                 target.y = it - target.height / 2f
             }
             snap = 1f
-            smoothing = 0.1f
+            smoothness = 0.1f
         }
         val gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
 
