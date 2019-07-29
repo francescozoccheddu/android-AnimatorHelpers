@@ -1,4 +1,6 @@
 package com.francescozoccheddu.animatorhelpers
 
-class ReadOnlyAnimatedValueWrapper<Type>(private val animatedValue: ReadOnlyAnimatedValue<Type>) :
+private class ReadOnlyAnimatedValueWrapper<Type>(animatedValue: ReadOnlyAnimatedValue<Type>) :
     ReadOnlyAnimatedValue<Type> by animatedValue
+
+fun <Type> ReadOnlyAnimatedValue<Type>.asReadOnly(): ReadOnlyAnimatedValue<Type> = ReadOnlyAnimatedValueWrapper(this)
