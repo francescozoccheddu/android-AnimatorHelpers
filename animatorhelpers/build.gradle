@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 1
-        versionName "0.1"
+        versionCode 2
+        versionName "0.1.1"
     }
 
     buildTypes {
@@ -37,7 +37,7 @@ publish {
     userOrg = 'francescoz'
     groupId = 'com.francescozoccheddu.animatorhelpers'
     artifactId = 'KotlinAnimatorHelpers'
-    publishVersion = '0.1.0'
+    publishVersion = '0.1.1'
     repoName = 'KotlinAnimatorHelpers'
     desc = 'Animator helpers for Android and Kotlin'
     website = 'https://github.com/francescozoccheddu/android-AnimatorHelpers'

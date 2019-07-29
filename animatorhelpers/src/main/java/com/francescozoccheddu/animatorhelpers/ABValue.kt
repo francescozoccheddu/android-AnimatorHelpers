@@ -53,8 +53,7 @@ abstract class ABValue<Type>(initialValue: Type) : TargetedValue<Type>(initialVa
 
     private var from = initialValue
 
-    override final fun animateTo(value: Type) {
-        super.animateTo(value)
+    override final fun animateToTarget() {
         from = _value
         animator.cancel()
         animator.duration = (when (durationMode) {
