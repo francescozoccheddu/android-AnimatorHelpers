@@ -16,14 +16,14 @@ class MainActivity : Activity() {
         val target = findViewById<View>(R.id.target)
         var tx by SpringFloat(target.x).apply {
             onUpdate = {
-                target.x = it - target.width / 2f
+                target.x = it.value - target.width / 2f
             }
             speed = 10f
             maxVelocity = 5000f
         }
         var ty by SpringFloat(target.y).apply {
             onUpdate = {
-                target.y = it - target.height / 2f
+                target.y = it.value - target.height / 2f
             }
             speed = 10f
             maxVelocity = 5000f
