@@ -19,12 +19,12 @@ class SmoothColor(initialValue: Int) : SmoothValue<Int>(initialValue) {
         a = target.alpha
     }
 
-    override fun update() {
+    override fun update(): Int {
         r = smooth(r, target.red, SNAP)
         g = smooth(g, target.green, SNAP)
         b = smooth(b, target.blue, SNAP)
         a = smooth(a, target.alpha, SNAP)
-        _value = rgba(r, g, b, a)
+        return rgba(r, g, b, a)
     }
 
 }

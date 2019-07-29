@@ -15,9 +15,9 @@ class SmoothInt(initialValue: Int) : SmoothValue<Int>(initialValue) {
         rawValue = value.toFloat()
     }
 
-    override fun update() {
+    override fun update() : Int {
         rawValue = smooth(rawValue, target.toFloat(), SNAP)
-        _value = rawValue.roundToInt()
+        return rawValue.roundToInt()
     }
 
 }
