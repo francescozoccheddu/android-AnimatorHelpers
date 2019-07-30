@@ -2,10 +2,6 @@ package com.francescozoccheddu.animatorhelpers
 
 abstract class SpringValue<Type>(initialValue: Type) : TargetedValue<Type>(initialValue) {
 
-    private companion object {
-        private const val VELOCITY_SNAP_FACTOR = 2f
-    }
-
     override fun animateToTarget() {
         ticker.running = true
     }
@@ -56,7 +52,7 @@ abstract class SpringValue<Type>(initialValue: Type) : TargetedValue<Type>(initi
             val n2 = 1f + acceleration * elapsed
             velocity = (n1 / (n2 * n2)).clampAbsValue(maxVelocity)
             value += velocity * elapsed
-            if (snap > 0f && value.isAlmost(target, snap) && velocity.isAlmost(0f, snap * VELOCITY_SNAP_FACTOR)) {
+            if (snap > 0f && value.isAlmost(target, snap)) {
                 value = target
                 velocity = 0f
             }
