@@ -3,7 +3,7 @@
 
 ## Installation
 ``` gradle
-implementation 'com.francescozoccheddu.animatorhelpers:KotlinAnimatorHelpers:0.1.1'
+implementation 'com.francescozoccheddu.animatorhelpers:AnimatorHelpers:0.1'
 ```
 
 
